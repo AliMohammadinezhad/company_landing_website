@@ -24,12 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = 'some-secret-key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG")
+# DEBUG = os.environ.get("DEBUG")
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", '*').split(' ')
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", '*').split(' ')
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -78,14 +81,21 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.environ.get('ENGINE', 'django.db.backends.sqlite3'),
+#         'NAME': os.environ.get('MYSQL_DATABASE', BASE_DIR / 'db.sqlite3'),
+#         'USER': os.environ.get('MYSQL_USER'),
+#         'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
+#         'HOST': os.environ.get('DB_HOST', 'db'),  # Use 'db' as default from .env
+#         'PORT': os.environ.get('DB_PORT', '3306'),  # Use '3306' as default from .env
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get('ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': os.environ.get('MYSQL_DATABASE', BASE_DIR / 'db.sqlite3'),
-        'USER': os.environ.get('MYSQL_USER'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST', 'db'),  # Use 'db' as default from .env
-        'PORT': os.environ.get('DB_PORT', '3306'),  # Use '3306' as default from .env
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
     }
 }
 
